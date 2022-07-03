@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #define TOTAL 6   //1 + 2 + 3
 using namespace std;
 
@@ -18,13 +19,9 @@ void Tower(int n, int a, int b){  //move n from pos_a to pos_b
 }
 int main(){
   int n;
-  int total = 0;
 
   cin >> n;
-  for(int i=0; i<n; i++){
-    total = total*2 + 1;
-  }
-  cout << total << '\n';
+  cout << pow(2, n)-1  << '\n'; //2^n - 1
 
   Tower(n, 1, 3);
   
