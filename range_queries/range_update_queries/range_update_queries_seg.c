@@ -13,7 +13,7 @@ int value[200001];
 void PushDown(int idx, long long delta){
   seg_tree[idx<<1].value += delta*(seg_tree[idx<<1].r-seg_tree[idx<<1].l+1);  //push to left sub-tree
   seg_tree[idx<<1].delta += delta;
-  seg_tree[idx<<1|1].value += delta*(seg_tree[idx<<1|1].r-seg_tree[idx<<1|1].l+1);  //push to left sub-tree
+  seg_tree[idx<<1|1].value += delta*(seg_tree[idx<<1|1].r-seg_tree[idx<<1|1].l+1);  //push to right sub-tree
   seg_tree[idx<<1|1].delta += delta;
   seg_tree[idx].delta = 0;
 }
