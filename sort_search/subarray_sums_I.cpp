@@ -2,49 +2,36 @@
 using namespace std;
 int main(){
   int n;
-  long long x;
-  cin >> n >> x;
-  long long arr[n];
   long long total = 0;
-  long long count = 0;
+  long long x;
+  long long cnt = 0;
+  
+  cin >> n >> x;
+  vector <long long> arr(n+10);
   for(int i=0; i<n; i++){
     cin >> arr[i];
   }
+ 
   int l, r;
   l = r = 0;
-  total = arr[0];
-  while(r < n && l < n){
+  for(r=0; r<n; r++){
+    total += arr[r];
+ 
     if(total == x){
-        count ++;
-        if(r == n-1){
-          break;
-        }
-        else{
-          total += arr[++r];
-        }
+      cnt ++;
     }
-    else if(l == r){
-      if(r == n-1){
-        break;
-      }
-      else{
-        total += arr[++r];
-      }
+    else if(total < x){
+      continue;
     }
-    else{
-      if(total < x){
-        if(r == n-1){
-          break;
-        }
-        else{
-          total += arr[++r];
-        }
-      }
-      else if(total > x){
+    else{ //total > x
+      while(l<=r && total > x){
         total -= arr[l++];
+      }
+      if(total == x){
+        cnt ++;
       }
     }
   }
-
-  cout << count;
+ 
+  cout << cnt << '\n';
 }
